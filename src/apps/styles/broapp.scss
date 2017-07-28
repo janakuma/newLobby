@@ -1,0 +1,69 @@
+﻿@import './bro.variable.scss';
+
+.wrapper {
+    @include calc_pd(80vh,0,0,0);
+    height: 100vh; background: url('#{$img}/body-bg.jpg') 0 0 no-repeat; background-size: cover;
+    border: 1px solid #000;
+}
+
+/* HEADER */
+.bro-header {
+    @include calc_h(80vh);
+    @include calc_pd(0,36vh,0,36vh);
+
+    position: absolute; top: 0; left: 0; width: 100%;
+    background-color: $bg_black4;
+
+    h1.logo {
+        @include calc_w(80vh);
+        @include calc_top(16vh);
+        @include calc_mg(0,65vh,0,0);
+        position: relative; float: left;
+        img {width: 100%; filter:drop-shadow(0 0 4px rgba(0,0,0,0.5));}
+    }
+
+    .bro-gnb {
+        position: relative; float: left;
+
+        > ul {
+            > li {
+                @include calc_mg(0,50vh,0,0);
+                position: relative; display: inline-block;
+
+                > a {
+                    @include calc_lh(80vh);
+                    @include calc_fz(26vh);
+                    @extend .animate;
+                    display: block; text-transform: uppercase;
+
+                    &:hover,
+                    &.active {color: $point_color;}
+                }
+            }
+        }
+
+        .activator {
+            @include calc_w(54vh);
+            @include calc_h(3vh);
+            position: absolute; display: block; bottom: 0; left: 0; background-color: $point_color;
+        }
+    }
+}
+/* //HEADER */
+
+.banner {
+    @include calc_w(300vh);
+    @include calc_h(100vh);
+    @include calc_top(100vh);
+    @include calc_left(20vh);
+
+    > div {height: 100%;}
+
+    div:nth-of-type(1) {background-color: red;}
+    div:nth-of-type(2) {background-color: blue;}
+    div:nth-of-type(3) {background-color: green;}
+    div:nth-of-type(4) {background-color: pink;}
+    div:nth-of-type(5) {background-color: gold;}
+}
+
+

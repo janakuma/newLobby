@@ -1,0 +1,100 @@
+﻿@import './bro.variable.scss';
+
+$img: '/dist/images/usermatch';
+
+.usermatch {
+    @include calc_bottom(36vh);
+    @include calc_right(36vh);
+    @include calc_w(270vh);
+
+    position: absolute; line-height: 1;
+
+    .match {
+        @include calc_pd(18vh,20vh,15vh,20vh);
+        @include boxShadow-sm();
+        &:first-child {margin-top: 0;}
+
+        position: relative; border: 1px solid $border_color;
+
+        .match-label {
+            @include calc_fz(16vh);
+            text-align: left;
+        }
+        .tip {top: 0; transform: translate(-120%,0);}
+    }
+
+    .custom {
+        @include calc_mg(0,0,5vh,0);
+        @include calc_fz(22vh);
+
+        border-color: #5a5a5a; color: #979797; background-color: rgba(38,38,38,0.75);
+    }
+
+    .custom.active {
+        color: #bdbdbd; background: $bg_black75; border: 1px solid #585858;
+
+        &:hover {
+            color: #fff;
+            border: 1px solid $point_color;
+            background-color: rgba(255,198,0,0.6);
+        }
+    }
+
+    .team {
+        border-bottom: none;
+
+        .match-label {
+            @include calc_fz(22vh);
+        }
+
+        .selectMatch {
+            @include calc_mg(10vh,0,0,0);
+            display: flex; justify-content: center;
+
+            button {
+                @include calc_h(79vh);
+                @include calc_fz(18vh);
+
+                flex: 1; margin: 0 -1px 0 0; border: 1px solid rgba(255,255,255,1); opacity: 0.6;
+                transition: opacity 0.4s; text-align: center;
+
+                img {
+                    @include calc_h(26vh);
+                }
+
+                span {display: block;}
+
+                &.on,
+                &:hover {
+                    position: relative; z-index: 5; border: 1px solid $point_color;
+                    opacity: 1; color: $point_color; background-color: $active-color;
+                }
+            }
+        }
+
+        .btn-random {
+            @include calc_lh(30vh);
+            @include calc_mg(5vh,0,0,0);
+            @include calc_fz(16vh);
+
+            display: none; width: 100%; border: 1px solid #fff; opacity: 0.4; text-align: center;
+
+            &.able {
+                display: block;
+            }
+        }
+    }
+}
+
+.playMode {
+    @include calc_h(90vh);
+    @include calc_fz(22vh);
+
+    color: #000; text-shadow: none;
+    background: url('#{$img_common}/play-bg.jpg') 0 0 no-repeat;
+    background-size: cover; text-align:center;
+
+    P {
+        @include calc_fz(45vh);
+    }
+}
