@@ -1,30 +1,45 @@
 export default function() {
     return [
         {
-            id: 1,
-            first: "BUCKY",
-            last: "ROBERTS",
-            age: 71,
-            description: "Bucky is a react devloper and youtuber",
-            thumnail: "http://i.imgur.com"
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma',
+            condition: "offline",
         },
 
         {
-            id: 2,
-            first: "BUCKY",
-            last: "ROBERTS",
-            age: 71,
-            description: "Bucky is a react devloper and youtuber",
-            thumnail: "http://i.imgur.com"
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma1',
+            condition: "offline",
         },
 
         {
-            id: 3,
-            first: "BUCKY",
-            last: "ROBERTS",
-            age: 71,
-            description: "Bucky is a react devloper and youtuber",
-            thumnail: "http://i.imgur.com"
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma',
+            condition: "offline2",
+        },
+
+        {
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma',
+            condition: "offline3",
+        },
+
+        {
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma',
+            condition: "offline4",
+        },
+
+        {
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma',
+            condition: "offline5",
+        },
+
+        {
+            thumnail: "http://i.imgur.com",
+            user_id: 'janakuma',
+            condition: "offline6",
         }
     ]
 }

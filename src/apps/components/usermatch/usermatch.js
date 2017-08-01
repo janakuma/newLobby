@@ -11,20 +11,14 @@ export default class Usermatch extends React.Component {
 		}
 	}
 
-	selectMatch(mode) {			
-		console.log(mode);	
-		this.setState({
-			selected: mode			
-		})
+	selectMatch(mode) {
+		console.log('currentMode', mode);
+		this.setState({selected: mode});
 
 		if(mode == 'SOLO') {
-            this.setState({
-				able: ''
-            })
+            this.setState({able: ''});
         } else {
-            this.setState({
-				able: 'able'
-			})
+            this.setState({able: 'able'});
 		}
 	}
 
@@ -32,8 +26,6 @@ export default class Usermatch extends React.Component {
 		console.log('isActive', mode);
 		return ((mode == this.state.selected) ? 'on' : '');
 	}
-
-	
 
 	render() {
 		return (
@@ -51,12 +43,12 @@ export default class Usermatch extends React.Component {
 				{/* TEAM MATCH */}
 				<div className="match team">
 					<h3 className="match-label">TEAM MATCH</h3>
-					<div className="selectMatch">						
-						
+					<div className="selectMatch">
+
 						<button
 							onClick={() => this.selectMatch('SOLO')}
 							className={
-								this.isActive('SOLO')								
+								this.isActive('SOLO')
 							}
 						>
 							<img src="images/common/match-solo.png" alt="SOLO"/>
@@ -65,8 +57,8 @@ export default class Usermatch extends React.Component {
 
 						<button
 							onClick={() => this.selectMatch('DUO')}
-							className={								
-								this.isActive('DUO')																
+							className={
+								this.isActive('DUO')
 							}
 						>
 							<img src="images/common/match-duo.png" alt="DUO"/>
@@ -74,15 +66,15 @@ export default class Usermatch extends React.Component {
 						</button>
 
 						<button
-							onClick={() => this.selectMatch('SQUARD')}							
-							className={								
-								this.isActive('SQUARD')																
+							onClick={() => this.selectMatch('SQUARD')}
+							className={
+								this.isActive('SQUARD')
 							}
 						>
 							<img src="images/common/match-squard.png" alt="SQUARD"/>
 							<span>SQUARD</span>
 						</button>
-						
+
 					</div>
 
 					<button className={'btn-random ' + (this.state.able)}>
@@ -95,7 +87,7 @@ export default class Usermatch extends React.Component {
 				</div>
 				{/* //TEAM MATCH */}
 
-				{/* PLAYMODE */}				
+				{/* PLAYMODE */}
 				<div className="match cursor playMode">
 					<span>{this.state.selected} MODE</span>
 					<p>PLAY</p>

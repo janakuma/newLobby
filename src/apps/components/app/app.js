@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Route, NavLink, Match
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import Swiper from 'react-id-swiper';
 
 /* LAYOUT */
@@ -18,6 +16,26 @@ import Chat from '../chat/chat';
 
 export default class App extends React.Component {
 
+	constructor(props) {
+		super(props);
+		//this.position = this.position.bind(this);
+
+		this.state = {
+			barW : 30
+		}
+	}
+
+	position(val) {
+		/*console.log(e.nativeEvent.target.clientWidth); */
+
+		this.setState({
+			aa: val
+		})
+
+		//console.log(e)
+
+	}
+
 	render() {
 		return (
 			<div className="wrapper">
@@ -29,16 +47,16 @@ export default class App extends React.Component {
 							<nav className="bro-gnb">
 								<ul className="clearfix">
 									<li>
-										<NavLink to="/" exact activeClassName="active">home</NavLink>
+										<NavLink to="/" exact activeClassName="active" onClick={() => this.position(0)}>home</NavLink>
 									</li>
 									<li>
-										<NavLink to="/about" activeClassName="active">character</NavLink>
+										<NavLink to="/about" activeClassName="active" onClick={() => this.position(200)}>character</NavLink>
 									</li>
 									<li>
-										<NavLink to="/contact" activeClassName="active">rewards</NavLink>
+										<NavLink to="/contact" activeClassName="active" onClick={() => this.position(300)}>rewards</NavLink>
 									</li>
 								</ul>
-								<i id="aa" className="activator"></i>
+								<i id="menuBar" ref="menuBar" className="activator animate" style={{left: this.state.aa}}></i>
 							</nav>
 
 							<Userinfo></Userinfo>

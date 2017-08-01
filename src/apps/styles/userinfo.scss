@@ -85,7 +85,7 @@ $img: '/dist/images/userinfo';
 		}
 
 		&:after {
-			@include calc_right(20vh);
+			@include calc_right(10vh);
 			@include calc_bottom(0);
 			@include calc_border(5vh, solid, transparent);
 
@@ -123,9 +123,12 @@ $img: '/dist/images/userinfo';
 .serviceList {
 	@include calc_w(262vh);
 	&.arrow-top:after {
-		@include calc_right(50vh);
+		left: 50%;
+		transform: translate(-50%,0);
+
 	}
-	box-sizing: border-box; position: absolute; right: 0; border: 1px solid $point_color; line-height: 1;
+	box-sizing: border-box; position: absolute; left: 50%; border: 1px solid $point_color; line-height: 1;
+	transform: translate(-50%,0);
 
 	li {
 		@include calc_lh(50vh);
