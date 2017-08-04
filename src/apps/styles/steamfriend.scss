@@ -80,7 +80,6 @@ $thum_h: 43vh;
     }
 }
 
-
 $steamLayer_top: 400vh;
 /* INVITATIONS */
 .invitations {
@@ -109,20 +108,23 @@ $steamLayer_top: 400vh;
 
     /* LIST */
     .list {
+        position: relative;
+        margin-top: -1px;
+
         h4 {
             @include calc_pd(5vh,20vh,5vh,20vh);
             @include calc_fz(16vh);
 
+            border-top: 1px solid #898989;
+            border-bottom: 1px solid #898989;
+            cursor: pointer;
+
+            &:hover,
             &.active {
-                background-color: $active_color;
-                border-top: 1px solid $point_color;
-                border-bottom: 1px solid $point_color;
+                border-color: $point_color;
             }
-            &.deactive {
-                background-color: #0f0f0f;
-                border-top: 1px solid #898989;
-                border-bottom: 1px solid #898989;
-            }
+            &.active {background-color: $active_color;}
+            &.deactive {background-color: #0f0f0f;}
         }
     }
 }
@@ -136,8 +138,8 @@ $steamLayer_top: 400vh;
 /* COMMON - Header */
 .cmptHeaer {
     @include calc_pd(16vh,20vh,16vh,20vh);
-    position: relative;
-    border-bottom: 1px solid #898989;
+    position: relative; border-bottom: 1px solid #898989;
+
 
     h3 {
         @include calc_fz(26vh);

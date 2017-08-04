@@ -1,6 +1,7 @@
-import * as types from './ActionTypes';
-
-export const setColor = (color) => ({
-    type: types.SET_COLOR,
-    color
-});
+export const selectUser = (user) =>  {
+    console.log('you clicked on user : ', user.first);
+    return {
+        type: "USER_SELECTED",
+        payload: user
+    }
+}
