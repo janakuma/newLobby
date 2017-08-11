@@ -96,12 +96,30 @@ $img: '/dist/images/userinfo';
 
 	.serviceList {
 		display: none;
+		&.isView {
+			display: block;
+		}
+
+		ul {
+			position: relative;
+			z-index: 10;
+
+			li * {
+				pointer-events: none;
+			}
+		}
 	}
 
 	&:hover {
 		.serviceList {
-			display: block;
+			//display: block;
 		}
+	}
+
+	.activator {
+		@include calc_h(50vh);
+		display: block; width: 100%;
+		position: absolute; top: 0; left: 0; background-color: $active_color;
 	}
 }
 
@@ -136,10 +154,8 @@ $img: '/dist/images/userinfo';
 		@include calc_fz(12vh);
 
 		position: relative; margin: 0 0 -1px 0; color: #b0b0b0;
-		border-top: 1px solid #484848; border-bottom: 1px solid #484848;
-		cursor: pointer;
-		transition: all 0.4s;
-
+		border-top: 1px solid #484848; border-bottom: 1px solid #484848; cursor: pointer;
+		transition: background-color 0.5s ease-in, border-color 0.5s ease-out;
 
 		&:first-child {border-top: none;}
 		&:last-child {border-bottom: none;}
@@ -168,6 +184,7 @@ $img: '/dist/images/userinfo';
 			&.level3:before {background-image: url('#{$img_common}/ico-antenna3.png');}
 		}
 
+		&.on,
 		&:hover {
 			z-index: 10; background-color: $active_color; border-color: $point_color;
 			.mark {color: $point_color;}
@@ -184,25 +201,6 @@ $img: '/dist/images/userinfo';
 	}
 }
 
-
-/* TRANSITION TEST */
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
 
 /* OPTION 창 - serviceList 클래스를 참조하고 있음*/
 .optionBox {

@@ -16,7 +16,7 @@
 
 /* Animate - 차후 지워야 할 이슈가 있음*/
 .animate {
-    transition: all 0.4s;
+    transition: all 0.3s;
 }
 
 /* 투명 배경 엘리먼트 모음 */
@@ -229,3 +229,21 @@
 
 .flex1 {flex:1;}
 .dFlex {display: flex;}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

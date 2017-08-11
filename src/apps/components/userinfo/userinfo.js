@@ -8,7 +8,9 @@ export default class Userinfo extends React.Component {
 		this.state = {
 			layerOpen: false,
 			zoomIn: false,
-			setServer: 'NA'
+			setServer: 'NA',
+			broCash: '1,000',
+			broPoint: '1,000',
 		};
 		this.addClass = this.addClass.bind(this);
 		this.removeClass = this.removeClass.bind(this);
@@ -28,11 +30,31 @@ export default class Userinfo extends React.Component {
 	}
 
 
-	selectServer(server) {
+	selectServer(server, e) {
+		/* if(e.target.tagName.toLowerCase() != 'li') {
+			this.stopPropagation();
+		} */
+
+		let elY = this.refs.serviceList.getBoundingClientRect().top,
+			setY = e.target.getBoundingClientRect().top,
+			calcY = setY - elY
+
 		this.setState({
-			setServer: server
+			setServer: server,
+			calcY,
+
 		})
-		console.log(server)
+
+		console.log('개구리', this);
+	}
+
+
+	/* SERVER LIST MOUSEOVER */
+	userserverEvent(isViewFlag) {
+		this.setState({
+			isView: isViewFlag
+		})
+		console.log(isViewFlag);
 	}
 
 	render() {
@@ -43,7 +65,7 @@ export default class Userinfo extends React.Component {
 
 					{/* bro cash */}
 					<div className="block userCash">
-						<em>1,000</em>
+						<em>{this.state.broCash}</em>
 						<button className="addPoint">Add point</button>
 					</div>
 					{/* //bro cash */}
@@ -60,40 +82,55 @@ export default class Userinfo extends React.Component {
 
 					{/* userserver */}
 					<div className="block userserver">
-						<p className="selectValue">{this.state.setServer}</p>
+						<p
+							className="selectValue"
+							onMouseEnter={() => this.userserverEvent(true)}
+						>
+							{this.state.setServer}
+						</p>
 
-						<div className="serviceList lineBlock-c arrow-top">
+						<div
+							className={
+								classNames("serviceList lineBlock-c arrow-top", {
+									"isView" : this.state.isView,
+								})
+							}
+							ref="serviceList"
+						>
 							<ul>
-								<li onClick={() => this.selectServer('NA')}>
+								<li onClick={(e) => this.selectServer('NA', e)} className={(this.state.setServer == 'NA') ? 'on' : ''}>
 									<strong className="mark">NA</strong>
 									<span>NORTH AMERICA</span>
 									<i className="antenna level0">200ms</i>
 								</li>
 
-								<li onClick={() => this.selectServer('EU')}>
+								<li onClick={(e) => this.selectServer('EU', e)} className={(this.state.setServer == 'EU') ? 'on' : ''}>
 									<strong className="mark">EU</strong>
 									<span>EROPEAN UNION</span>
 									<i className="antenna level0">200ms</i>
 								</li>
 
-								<li onClick={() => this.selectServer('AS')}>
+								<li onClick={(e) => this.selectServer('AS', e)}>
 									<strong className="mark">AS</strong>
 									<span>ASIA</span>
 									<i className="antenna level1">200ms</i>
 								</li>
 
-								<li onClick={() => this.selectServer('OC')}>
+								<li onClick={(e) => this.selectServer('OC', e)}>
 									<strong className="mark">OC</strong>
 									<span>ORANGE COUNTRY</span>
 									<i className="antenna level2">200ms</i>
 								</li>
 
-								<li onClick={() => this.selectServer('SA')}>
+								<li onClick={(e) => this.selectServer('SA', e)}>
 									<strong className="mark">SA</strong>
 									<span>SOUTH AMERICA</span>
 									<i className="antenna level3">200ms</i>
 								</li>
 							</ul>
+							<span
+								className="activator animate" style={{top: this.state.calcY}}
+							></span>
 						</div>
 					</div>
 					{/* //userserver */}

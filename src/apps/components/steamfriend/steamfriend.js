@@ -1,11 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import {selectUser} from '../actions/index';
-
-
-
 
 /* PLUGIN */
 import ReactScrollbar from 'react-scrollbar-js';
@@ -26,11 +22,17 @@ function mapStateToProps(state) {
 	}
 }
 
-function matchDispatchToProps(dispatch) {
+/* function matchDispatchToProps(dispatch) {
 	return bindActionCreators({selectUser : selectUser}, dispatch)
-}
+} */
 
 class Steamfriend extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {isToggle: true, group: 'team'};
+		this.groupToggle = this.groupToggle.bind(this);
+	}
 
 	createListItems(condition) {
 		return this.props.users
@@ -54,11 +56,23 @@ class Steamfriend extends React.Component {
 		});
 	}
 
-	searchUser(inputValue) {
-		console.log(inputValue);
+	searchUser(event) {
+		console.log(event.target.value);
 	}
 
+	groupToggle(group, e) {
+
+		console.log('event', this);
+
+		this.setState(prevState => ({
+			isToggle: !prevState.isToggle,
+			group
+		}))
+	}
+
+
 	render() {
+
 		return (
 			<div>
 				{/* STEAMFRIEND LIST */}
@@ -74,29 +88,29 @@ class Steamfriend extends React.Component {
 						</span>
 
 						<section className="searchArea">
-							<input type="text" className="search" placeholder="SEARCH. USER ID" onChange={() => this.props.searchUser('aaa')}/>
+							<input type="text" className="search" placeholder="SEARCH. USER ID" onChange={(event) => this.searchUser(event)}/>
 							<button className="fa fa-undo fa-lg"></button>
 						</section>
 					</header>
 
 					<div className="scroll list">
 						<ReactScrollbar style={styles.attt}>
-						<h4 className="team">TEAM ({this.createListItems('team').length})</h4>
-						<section className="userList">
+						<h4 className="team" onClick={(e)=>this.groupToggle('team', e)}>TEAM ({this.createListItems('team').length})</h4>
+						<section className="userList" style={{display: (this.state.isToggle && this.state.group == 'team' ? 'block' : 'none')}}>
 							<ul>
 								{this.createListItems('team')}
 							</ul>
 						</section>
 
-						<h4 className="active">ONLINE ({this.createListItems('online').length})</h4>
-						<section className="userList">
+						<h4 className="active" onClick={()=>this.groupToggle('online')}>ONLINE ({this.createListItems('online').length})</h4>
+						<section className="userList" style={{display: (this.state.isToggle && this.state.group == 'online' ? 'block' : 'none')}}>
 							<ul>
 								{this.createListItems('online')}
 							</ul>
 						</section>
 
-						<h4 className="deactive">OFFLINE ({this.createListItems('offline').length})</h4>
-						<section className="userList">
+						<h4 className="deactive" onClick={()=>this.groupToggle('offline')}>OFFLINE ({this.createListItems('offline').length})</h4>
+						<section className="userList" style={{display: (this.state.isToggle && this.state.group == 'offline' ? 'block' : 'none')}}>
 							<ul>
 								{this.createListItems('offline')}
 							</ul>
@@ -222,4 +236,4 @@ class Steamfriend extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Steamfriend);
+export default connect(mapStateToProps, null)(Steamfriend);
