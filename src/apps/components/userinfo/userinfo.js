@@ -31,21 +31,22 @@ export default class Userinfo extends React.Component {
 
 
 	selectServer(server, e) {
-		/* if(e.target.tagName.toLowerCase() != 'li') {
-			this.stopPropagation();
-		} */
-
-		let elY = this.refs.serviceList.getBoundingClientRect().top,
-			setY = e.target.getBoundingClientRect().top,
-			calcY = setY - elY
-
 		this.setState({
 			setServer: server,
-			calcY,
-
+			isView: false,
 		})
 
 		console.log('개구리', this);
+	}
+
+	enterServer(e) {
+		let elY = this.refs.serviceList.getBoundingClientRect().top,
+		setY = e.target.getBoundingClientRect().top,
+		calcY = setY - elY
+
+		this.setState({
+			calcY
+		})
 	}
 
 
@@ -98,31 +99,51 @@ export default class Userinfo extends React.Component {
 							ref="serviceList"
 						>
 							<ul>
-								<li onClick={(e) => this.selectServer('NA', e)} className={(this.state.setServer == 'NA') ? 'on' : ''}>
+								<li
+									onClick={(e) => this.selectServer('NA')}
+									onMouseEnter={(e) => this.enterServer(e)}
+									className={(this.state.setServer == 'NA') ? 'on' : ''}
+								>
 									<strong className="mark">NA</strong>
 									<span>NORTH AMERICA</span>
 									<i className="antenna level0">200ms</i>
 								</li>
 
-								<li onClick={(e) => this.selectServer('EU', e)} className={(this.state.setServer == 'EU') ? 'on' : ''}>
+								<li
+									onClick={(e) => this.selectServer('EU')}
+									onMouseEnter={(e) => this.enterServer(e)}
+									className={(this.state.setServer == 'EU') ? 'on' : ''}
+								>
 									<strong className="mark">EU</strong>
 									<span>EROPEAN UNION</span>
 									<i className="antenna level0">200ms</i>
 								</li>
 
-								<li onClick={(e) => this.selectServer('AS', e)}>
+								<li
+									onClick={(e) => this.selectServer('AS')}
+									className={(this.state.setServer == 'AS') ? 'on' : ''}
+									onMouseEnter={(e) => this.enterServer(e)}
+								>
 									<strong className="mark">AS</strong>
 									<span>ASIA</span>
 									<i className="antenna level1">200ms</i>
 								</li>
 
-								<li onClick={(e) => this.selectServer('OC', e)}>
+								<li
+									onClick={(e) => this.selectServer('OC', e)}
+									className={(this.state.setServer == 'OC') ? 'on' : ''}
+									onMouseEnter={(e) => this.enterServer(e)}
+								>
 									<strong className="mark">OC</strong>
 									<span>ORANGE COUNTRY</span>
 									<i className="antenna level2">200ms</i>
 								</li>
 
-								<li onClick={(e) => this.selectServer('SA', e)}>
+								<li
+									onClick={(e) => this.selectServer('SA', e)}
+									className={(this.state.setServer == 'SA') ? 'on' : ''}
+									onMouseEnter={(e) => this.enterServer(e)}
+								>
 									<strong className="mark">SA</strong>
 									<span>SOUTH AMERICA</span>
 									<i className="antenna level3">200ms</i>

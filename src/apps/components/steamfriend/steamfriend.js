@@ -30,12 +30,13 @@ class Steamfriend extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {isToggle: true, group: 'team'};
+		this.state = {isToggle: true, group: 'team', users: this.props.users};
 		this.groupToggle = this.groupToggle.bind(this);
+		this.inviteTeam = this.inviteTeam.bind(this);
 	}
 
 	createListItems(condition) {
-		return this.props.users
+		return this.state.users
 			.filter(user => user.condition == condition)
 			.map((user, index) => {
 				return (
@@ -44,7 +45,7 @@ class Steamfriend extends React.Component {
 						<strong>{user.username}</strong>
 
 						<div className="option">
-							<button className="fa fa-plus-circle fa-lg"></button>
+							<button className="fa fa-plus-circle fa-lg" onClick={(e)=>this.inviteTeam(user, index)}></button>
 							<button className="fa fa-info-circle fa-lg"></button>
 						</div>
 
@@ -56,12 +57,42 @@ class Steamfriend extends React.Component {
 		});
 	}
 
+	inviteTeam(self, index) {
+
+
+
+		for(let index = 0; index < this.state.users.length; index++) {
+			let aa = this.state.users[index].condition;
+
+			if(self.username == this.state.users[index].username) {
+
+				this.setState({
+					...this.state,
+					condition : 'team'
+				});
+
+				console.log(this.state.users)
+			} else {
+
+			}
+		}
+
+		/*
+		const aa = this.state.users.indexOf(user => user.username === self.username)
+		this.setState({
+			...this.state,
+			users: newUsers,
+			condition : 'team'
+		}); */
+
+
+	}
+
 	searchUser(event) {
 		console.log(event.target.value);
 	}
 
 	groupToggle(group, e) {
-
 		console.log('event', this);
 
 		this.setState(prevState => ({
@@ -70,9 +101,7 @@ class Steamfriend extends React.Component {
 		}))
 	}
 
-
 	render() {
-
 		return (
 			<div>
 				{/* STEAMFRIEND LIST */}
@@ -96,21 +125,21 @@ class Steamfriend extends React.Component {
 					<div className="scroll list">
 						<ReactScrollbar style={styles.attt}>
 						<h4 className="team" onClick={(e)=>this.groupToggle('team', e)}>TEAM ({this.createListItems('team').length})</h4>
-						<section className="userList" style={{display: (this.state.isToggle && this.state.group == 'team' ? 'block' : 'none')}}>
+						<section className="userList">
 							<ul>
 								{this.createListItems('team')}
 							</ul>
 						</section>
 
 						<h4 className="active" onClick={()=>this.groupToggle('online')}>ONLINE ({this.createListItems('online').length})</h4>
-						<section className="userList" style={{display: (this.state.isToggle && this.state.group == 'online' ? 'block' : 'none')}}>
+						<section className="userList">
 							<ul>
 								{this.createListItems('online')}
 							</ul>
 						</section>
 
 						<h4 className="deactive" onClick={()=>this.groupToggle('offline')}>OFFLINE ({this.createListItems('offline').length})</h4>
-						<section className="userList" style={{display: (this.state.isToggle && this.state.group == 'offline' ? 'block' : 'none')}}>
+						<section className="userList offline">
 							<ul>
 								{this.createListItems('offline')}
 							</ul>

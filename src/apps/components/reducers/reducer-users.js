@@ -1,77 +1,79 @@
+/*
+    condition: online, offline, lobby
+*/
+
 export default function() {
     return [
         {
             thumnail: "/images/_profile.jpg",
-            username: 'friend1',
-            condition: "offline",
+            username: 'pubg1',
+            condition: "team",
         },
 
         {
             thumnail: "/images/_profile1.jpg",
-            username: 'naruto',
+            username: 'pubg2',
             condition: "online",
         },
 
         {
             thumnail: "/images/_profile2.jpg",
-            username: 'hanzo',
-            condition: "team",
+            username: 'pubg3',
+            condition: "online",
         },
 
         {
             thumnail: "/images/_profile3.jpg",
-            username: 'janakuma',
+            username: 'pubg4',
             condition: "offline",
         },
 
         {
             thumnail: "/images/_profile4.jpg",
-            username: 'naruto',
+            username: 'pubg5',
             condition: "online",
         },
 
         {
             thumnail: "/images/_profile5.jpg",
-            username: 'hanzo',
+            username: 'pubg6',
             condition: "lobby",
         },
 
         {
             thumnail: "/images/_profile6.jpg",
-            username: 'janakuma',
+            username: 'pubg7',
             condition: "offline",
         },
 
         {
             thumnail: "/images/_profile7.jpg",
-            username: 'naruto',
+            username: 'pubg8',
             condition: "online",
         },
 
         {
             thumnail: "/images/_profile8.jpg",
-            username: 'hanzo',
-            condition: "team",
+            username: 'pubg9',
+            condition: "online",
         },
 
         {
             thumnail: "/images/_profile9.jpg",
-            username: 'janakuma',
+            username: 'pubg10',
             condition: "offline",
         },
 
         {
             thumnail: "/images/_profile10.jpg",
-            username: 'naruto',
+            username: 'pubg11',
             condition: "online",
         },
 
         {
             thumnail: "/images/_profile11.jpg",
-            username: 'hanzo',
+            username: 'pubg12',
             condition: "lobby",
         },
-
-
     ]
 }
